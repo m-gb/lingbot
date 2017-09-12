@@ -8,7 +8,11 @@ class Game
   include Colorized
 
   def initialize
+    puts(colorize(str: '*************************************',color_code: 32))
+    puts(colorize(str: '*',color_code: 32))    
     puts (colorize(str: 'Hello! Welcome to the German challenge game!', color_code: 32))
+    puts(colorize(str: '*',color_code: 32))
+    puts(colorize(str: '*************************************',color_code: 32))    
     @article_questions = [{question: colorize(str: "What's the article of Bier?", color_code: 36), answer: 'Das Bier'},
       {question: colorize(str: "What's the article of Buch?", color_code: 36), answer: 'Das Buch'},
       {question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
@@ -31,13 +35,19 @@ class Game
   def play_game(game)
     case game
     when 'article'
+      puts(colorize(str: '*',color_code: 33))    
       puts (colorize(str: "You've picked the article game", color_code: 33))        
+      puts(colorize(str: '*',color_code: 33))
       article
     when 'plurals'
+      puts(colorize(str: '*',color_code: 33))    
       puts (colorize(str: "You've picked the plurals game", color_code: 33))        
+      puts(colorize(str: '*',color_code: 33))
       plurals
     when 'words'
+      puts(colorize(str: '*',color_code: 33))    
       puts (colorize(str: "You've picked the words game", color_code: 33))        
+      puts(colorize(str: '*',color_code: 33))
       words
     when 'stop'
       @stop_the_game = true
@@ -62,7 +72,9 @@ class Game
       end
       break if(correct == true)
     end
-    puts (colorize(str: "correct!", color_code: 32))                                
+    puts(colorize(str: '*',color_code: 32))    
+    puts (colorize(str: "correct!", color_code: 32))
+    puts(colorize(str: '*',color_code: 32))    
     puts
     @article_questions.delete(random_article_question)
   end
@@ -83,7 +95,9 @@ class Game
       end
       break if(correct == true)
     end
-    puts (colorize(str: "correct!", color_code: 32))                                
+    puts(colorize(str: '*',color_code: 32))    
+    puts (colorize(str: "correct!", color_code: 32))
+    puts(colorize(str: '*',color_code: 32))                                
     puts
     @plurals_questions.delete(random_plurals_question)
   end
@@ -104,7 +118,9 @@ class Game
       end
       break if(correct == true)
     end
-    puts (colorize(str: "correct!", color_code: 32))                                
+    puts(colorize(str: '*',color_code: 32))    
+    puts (colorize(str: "correct!", color_code: 32))
+    puts(colorize(str: '*',color_code: 32)) 
     puts
     @words_questions.delete(random_words_question)
   end
