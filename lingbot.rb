@@ -8,15 +8,10 @@ class Game
   include Colorized
 
   def initialize
-    puts(colorize(str: '*************************************',color_code: 32))
-    puts(colorize(str: '*',color_code: 32))    
-    puts (colorize(str: 'Hello! Welcome to the German challenge game!', color_code: 32))
-    puts(colorize(str: '*',color_code: 32))
-    puts(colorize(str: '*************************************',color_code: 32))    
     @article_questions = [{question: colorize(str: "What's the article of Bier?", color_code: 36), answer: 'Das Bier'},
-      {question: colorize(str: "What's the article of Buch?", color_code: 36), answer: 'Das Buch'},
-      {question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
-      {question: colorize(str: "What's the article of Wasser?", color_code: 36), answer: 'Das Wasser'}]
+      {question: colorize(str: "What's the article of Buch?", color_code: 36), answer: 'Das Buch'}]
+      # {question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
+      # {question: colorize(str: "What's the article of Wasser?", color_code: 36), answer: 'Das Wasser'}]
     @plurals_questions = [{question: colorize(str: "What's the plural of Der Man?", color_code: 34), answer: 'Die Männer'},
       {question: colorize(str: "What's the plural of Das Buch?", color_code: 34), answer: 'Die Bücher'},
       {question: colorize(str: "What's the plural of Die Frau?", color_code: 34), answer: 'Die Frauen'},
@@ -25,6 +20,14 @@ class Game
       {question: colorize(str: "How do you say woman?", color_code: 35), answer: 'Die Frau'},
       {question: colorize(str: "How do you say water?", color_code: 35), answer: 'Das Wasser'},
       {question: colorize(str: "How do you say computer?", color_code: 35), answer: 'Der Computer'}]
+  end
+
+  def greeting
+    puts(colorize(str: '*************************************',color_code: 32))
+    puts(colorize(str: '*',color_code: 32))    
+    puts (colorize(str: 'Hello! Welcome to the German challenge game!', color_code: 32))
+    puts(colorize(str: '*',color_code: 32))
+    puts(colorize(str: '*************************************',color_code: 32))
   end
 
   def choose_game
@@ -75,7 +78,6 @@ class Game
     puts(colorize(str: '*',color_code: 32))    
     puts (colorize(str: "correct!", color_code: 32))
     puts(colorize(str: '*',color_code: 32))    
-    puts
     @article_questions.delete(random_article_question)
   end
 
@@ -98,7 +100,6 @@ class Game
     puts(colorize(str: '*',color_code: 32))    
     puts (colorize(str: "correct!", color_code: 32))
     puts(colorize(str: '*',color_code: 32))                                
-    puts
     @plurals_questions.delete(random_plurals_question)
   end
 
@@ -121,11 +122,11 @@ class Game
     puts(colorize(str: '*',color_code: 32))    
     puts (colorize(str: "correct!", color_code: 32))
     puts(colorize(str: '*',color_code: 32)) 
-    puts
     @words_questions.delete(random_words_question)
   end
 
   def start!
+    greeting
     loop do
       game = choose_game
       play_game(game)
