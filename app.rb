@@ -3,7 +3,7 @@ require 'httparty'
 require 'json'
 
 post '/gateway' do
-  return if params[:token] != ENV['9XPhGp3iHr83vTIABx2Ifipp']
+  # return if params[:token] != ENV['9XPhGp3iHr83vTIABx2Ifipp']
   message = params[:text].gsub(params[:trigger_word], '').strip
 
   action, repo = message.split('_').map {|c| c.strip.downcase }
