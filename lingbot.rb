@@ -4,7 +4,7 @@ require 'json'
 
 post '/gateway' do
   return if params[:token] != ENV['9XPhGp3iHr83vTIABx2Ifipp']
-  message = params[:text].gsub(params[:lingbot], '').strip
+  message = params[:text].gsub(params[:trigger_word], '').strip
 
   action, repo = message.split('_').map {|c| c.strip.downcase }
   repo_url = "https://api.github.com/repos/#{repo}"
