@@ -1,2 +1,2 @@
-require './app'
+require './lingbot'
 run Sinatra::Application
