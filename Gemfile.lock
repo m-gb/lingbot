@@ -3,7 +3,6 @@ GEM
   specs:
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
-    json (2.1.0)
     multi_xml (0.6.0)
     mustermann (1.0.1)
     rack (2.0.3)
@@ -21,8 +20,10 @@ PLATFORMS
 
 DEPENDENCIES
   httparty
-  json
   sinatra
+
+RUBY VERSION
+   ruby 2.4.1p111
 
 BUNDLED WITH
    1.15.4
