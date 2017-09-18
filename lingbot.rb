@@ -162,4 +162,4 @@ class Game
   end
 end
 
-Game.new.start!
+# Game.new.start!
