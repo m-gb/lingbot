@@ -1,3 +1,7 @@
+require 'sinatra'
+require 'httparty'
+require 'json'
+
 post '/gateway' do
   return if params[:token] != ENV['9XPhGp3iHr83vTIABx2Ifipp']
   message = params[:text].gsub(params[:lingbot], '').strip
