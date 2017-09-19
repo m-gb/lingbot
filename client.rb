@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'socket'
+require './app.rb'
 class Client
   def initialize(server)
     @server = server
@@ -26,6 +27,7 @@ class Client
       loop {
         msg = $stdin.gets.chomp
         @server.puts(msg)
+        Game.new.start!    
       }
     end
   end 

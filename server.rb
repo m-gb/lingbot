@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'socket'
+require './app.rb'
 class Server
   def initialize(port, ip)
     @server = TCPServer.open(ip, port)
@@ -24,22 +25,21 @@ class Server
         end
         puts "#{nick_name} #{client}"
         @connections[:clients][nick_name] = client
-        client.puts "Connection established, Thank you for joining! Happy chatting"
-        listen_user_messages(nick_name, client)
+        # listen_user_messages(nick_name, client)
       end
     }.join
   end
 
-  def listen_user_messages(username, client)
-    loop {
-      msg = client.gets.chomp
-      @connections[:clients].each do |other_name, other_client|
-        unless other_name == username
-          other_client.puts "#{username.to_s}: #{msg}"
-        end
-      end
-    }
-  end
+  # def listen_user_messages(username, client)
+  #   loop {  
+  #     msg = client.gets.chomp
+  #     @connections[:clients].each do |other_name, other_client|
+  #       unless other_name == username
+  #         other_client.puts "#{username.to_s}: #{msg}"
+  #       end
+  #     end
+  #   }
+  # end
 end
 
 Server.new(3000, "localhost")
