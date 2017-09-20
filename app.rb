@@ -1,3 +1,7 @@
+#make an api in roda and sequel
+#make new classes (data, organize order of methods)
+require './data.rb'
+
 module Colorized
   def colorize(str:, color_code:)
     "\e[#{color_code}m#{str}\e[0m"  
@@ -8,37 +12,13 @@ class Game
   include Colorized
 
   def initialize
-    article_questions
-    plurals_questions
-    words_questions
-    @score = 0
-  end
-
-  def article_questions
-    @article_questions = [{question: colorize(str: "What's the article of Bier?", color_code: 36), answer: 'Das Bier'},
-    {question: colorize(str: "What's the article of Buch?", color_code: 36), answer: 'Das Buch'}]
-    # {question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
-    # {question: colorize(str: "What's the article of Wasser?", color_code: 36), answer: 'Das Wasser'}]
-  end
-
-  def plurals_questions
-    @plurals_questions = [{question: colorize(str: "What's the plural of Der Man?", color_code: 34), answer: 'Die Männer'},
-    {question: colorize(str: "What's the plural of Das Buch?", color_code: 34), answer: 'Die Bücher'},
-    {question: colorize(str: "What's the plural of Die Frau?", color_code: 34), answer: 'Die Frauen'},
-    {question:  colorize(str: "What's the plural of Der Computer?", color_code: 34), answer: 'Die Computer'}]
-  end
-
-  def words_questions
-    @words_questions = [{question: colorize(str: 'How do you say man?', color_code: 35), answer: 'Der Man'},
-      {question: colorize(str: 'How do you say woman?', color_code: 35), answer: 'Die Frau'},
-      {question: colorize(str: 'How do you say water?', color_code: 35), answer: 'Das Wasser'},
-      {question: colorize(str: 'How do you say computer?', color_code: 35), answer: 'Der Computer'}]
+    Data.new
   end
 
   def greeting
     puts(colorize(str: '*************************************',color_code: 32))
     puts(colorize(str: '*',color_code: 32))    
-    puts (colorize(str: 'Hello! Welcome to the German challenge game!', color_code: 32))
+    puts(colorize(str: 'Hello! Welcome to the German challenge game!', color_code: 32))
     puts(colorize(str: '*',color_code: 32))
     puts(colorize(str: '*************************************',color_code: 32))
   end

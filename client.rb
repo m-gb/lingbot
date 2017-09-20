@@ -27,7 +27,7 @@ class Client
       loop {
         msg = $stdin.gets.chomp
         @server.puts(msg)
-        Game.new.start! 
+        Game.new.start!
       }
     end
   end 
