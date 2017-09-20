@@ -8,19 +8,31 @@ class Game
   include Colorized
 
   def initialize
+    article_questions
+    plurals_questions
+    words_questions
+    @score = 0
+  end
+
+  def article_questions
     @article_questions = [{question: colorize(str: "What's the article of Bier?", color_code: 36), answer: 'Das Bier'},
-      {question: colorize(str: "What's the article of Buch?", color_code: 36), answer: 'Das Buch'}]
-      # {question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
-      # {question: colorize(str: "What's the article of Wasser?", color_code: 36), answer: 'Das Wasser'}]
+    {question: colorize(str: "What's the article of Buch?", color_code: 36), answer: 'Das Buch'}]
+    # {question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
+    # {question: colorize(str: "What's the article of Wasser?", color_code: 36), answer: 'Das Wasser'}]
+  end
+
+  def plurals_questions
     @plurals_questions = [{question: colorize(str: "What's the plural of Der Man?", color_code: 34), answer: 'Die Männer'},
-      {question: colorize(str: "What's the plural of Das Buch?", color_code: 34), answer: 'Die Bücher'},
-      {question: colorize(str: "What's the plural of Die Frau?", color_code: 34), answer: 'Die Frauen'},
-      {question:  colorize(str: "What's the plural of Der Computer?", color_code: 34), answer: 'Die Computer'}]
+    {question: colorize(str: "What's the plural of Das Buch?", color_code: 34), answer: 'Die Bücher'},
+    {question: colorize(str: "What's the plural of Die Frau?", color_code: 34), answer: 'Die Frauen'},
+    {question:  colorize(str: "What's the plural of Der Computer?", color_code: 34), answer: 'Die Computer'}]
+  end
+
+  def words_questions
     @words_questions = [{question: colorize(str: 'How do you say man?', color_code: 35), answer: 'Der Man'},
       {question: colorize(str: 'How do you say woman?', color_code: 35), answer: 'Die Frau'},
       {question: colorize(str: 'How do you say water?', color_code: 35), answer: 'Das Wasser'},
       {question: colorize(str: 'How do you say computer?', color_code: 35), answer: 'Der Computer'}]
-    @score = 0
   end
 
   def greeting
@@ -42,17 +54,17 @@ class Game
       puts(colorize(str: '*',color_code: 33))    
       puts (colorize(str: "You've picked the article game", color_code: 33))        
       puts(colorize(str: '*',color_code: 33))
-      article
+      article_game
     when 'plurals'
       puts(colorize(str: '*',color_code: 33))    
       puts (colorize(str: "You've picked the plurals game", color_code: 33))        
       puts(colorize(str: '*',color_code: 33))
-      plurals
+      plurals_game
     when 'words'
       puts(colorize(str: '*',color_code: 33))    
       puts (colorize(str: "You've picked the words game", color_code: 33))        
       puts(colorize(str: '*',color_code: 33))
-      words
+      words_game
     when 'stop'
       @stop_the_game = true
     else
@@ -81,7 +93,7 @@ class Game
     puts(colorize(str: '*',color_code: 32)) 
   end
 
-  def article
+  def article_game
     if @article_questions.empty?
       out_of_questions
       return
@@ -92,7 +104,7 @@ class Game
     @article_questions.delete(random_article_question)
   end
 
-  def plurals
+  def plurals_game
     if @plurals_questions.empty?
       out_of_questions
       return
@@ -103,7 +115,7 @@ class Game
     @plurals_questions.delete(random_plurals_question)
   end
 
-  def words
+  def words_game
     if @words_questions.empty?
       out_of_questions
       return
