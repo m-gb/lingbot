@@ -22,12 +22,12 @@ class Client
   end
 
   def send
-    puts "Enter the username:"
+    puts "Enter your username:"
     @request = Thread.new do
       loop {
         msg = $stdin.gets.chomp
         @server.puts(msg)
-        Game.new.start!    
+        Game.new.start! 
       }
     end
   end 

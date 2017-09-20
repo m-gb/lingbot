@@ -19,7 +19,7 @@ class Server
         nick_name = client.gets.chomp.to_sym
         @connections[:clients].each do |other_name, other_client|
           if nick_name == other_name || client == other_client
-            client.puts "This username already exist"
+            client.puts "This username already exists"
             Thread.kill self
           end
         end
