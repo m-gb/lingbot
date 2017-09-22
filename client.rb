@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'socket'
-require './app.rb'
+require_relative 'app'
+
 class Client
   def initialize(server)
     @server = server
