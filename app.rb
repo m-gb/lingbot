@@ -4,9 +4,11 @@ require_relative 'colorable'
 require_relative 'article'
 require_relative 'plural'
 require_relative 'word'
+require_relative 'output'
 
 class Game
   include Colorable
+  include Output
   
   def initialize
     @score = Score.new
@@ -20,16 +22,10 @@ class Game
       play_game(game)
       if(@stop_the_game == true)
         @score.final_score
-        puts (colorize(str: 'Quitting the game...', color_code: 31))                                        
+        quit_game
         exit(0)
       end
     end
-  end
-
-  def choose_game
-    puts (colorize(str: 'Which game do you want to play? (please choose: article, plural, word, score to show your score, or stop to quit)',
-          color_code: 33))
-    game = gets.chomp.downcase
   end
 
   def play_game(game)
@@ -68,28 +64,5 @@ class Game
     else
       puts (colorize(str: "That game doesn't exist.", color_code: 31))              
     end
-  end
-
-  def picked_game(game)
-    puts(colorize(str: '*',color_code: 33))    
-    puts(colorize(str: "You've picked the #{game} game", color_code: 33))        
-    puts(colorize(str: '*',color_code: 33))
-  end
-
-  def out_of_questions(questions)
-    if questions.empty?
-      puts (colorize(str: "You've answered all questions correctly.", color_code: 33))
-      return true
-    else
-      return false
-    end
-  end
-
-  def greeting
-    puts(colorize(str: '*************************************',color_code: 32))
-    puts(colorize(str: '*',color_code: 32))    
-    puts(colorize(str: 'Hello! Welcome to the German challenge game!', color_code: 32))
-    puts(colorize(str: '*',color_code: 32))
-    puts(colorize(str: '*************************************',color_code: 32))
   end
 end
