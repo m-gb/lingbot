@@ -33,30 +33,18 @@ class Game
     when 'article'
       picked_game(game)
       @a_questions ||= @game_data.article_questions
-      if out_of_questions(@a_questions)
-        return
-      else
-        Article.new.play(@a_questions)
-        @score.increase_score
-      end
+      article = Article.new
+      check_status(article, @a_questions)
     when 'plural'
       picked_game(game)
-      @p_questions ||=  @game_data.plural_questions   
-      if out_of_questions(@p_questions)
-        return
-      else
-        Plural.new.play(@p_questions)
-        @score.increase_score
-      end
+      @p_questions ||=  @game_data.plural_questions
+      plural = Plural.new
+      check_status(plural, @p_questions)
     when 'word'
       picked_game(game)
       @w_questions ||= @game_data.word_questions 
-      if out_of_questions(@w_questions)
-        return
-      else
-        Word.new.play(@w_questions)
-        @score.increase_score
-      end
+      word = Word.new
+      check_status(word, @w_questions)
     when 'score'
       @score.show_score
     when 'stop'
@@ -65,6 +53,13 @@ class Game
       puts (colorize(str: "That game doesn't exist.", color_code: 31))              
     end
   end
-end
 
-# add chat and bot that asks for the game
+  def check_status(game, questions)
+    if out_of_questions(questions)
+      return
+    else
+      game.play(questions)
+      @score.increase_score
+    end
+  end
+end
