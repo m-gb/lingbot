@@ -66,3 +66,5 @@ class Game
     end
   end
 end
+
+# add chat and bot that asks for the game

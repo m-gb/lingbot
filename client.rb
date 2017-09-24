@@ -28,10 +28,14 @@ class Client
       loop {
         msg = $stdin.gets.chomp
         @server.puts(msg)
-        Game.new.start!
+        if msg == 'play'
+          Game.new.start!
+        end
       }
     end
-  end 
+  end
+  
+
 end
 
 server = TCPSocket.open("localhost", 3000)
