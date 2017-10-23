@@ -6,8 +6,8 @@ class GameData
 	def article_questions
 		[{question: colorize(str: "What's the article of Bier?", color_code: 36), answer: 'Das Bier'},
 		{question: colorize(str: "What's the article of Buch?", color_code: 36), answer: 'Das Buch'}]
-		# {question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
-		# {question: colorize(str: "What's the article of Wasser?", color_code: 36), answer: 'Das Wasser'}]
+		{question: colorize(str: "What's the article of Frau?", color_code: 36), answer: 'Die Frau'},
+		{question: colorize(str: "What's the article of Wasser?", color_code: 36), answer: 'Das Wasser'}]
 	end
 
 	def plural_questions

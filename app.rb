@@ -1,3 +1,5 @@
+require 'pg'
+require 'sequel'
 require_relative 'game_data'
 require_relative 'score'
 require_relative 'colorable'
@@ -13,6 +15,7 @@ class Game
   def initialize
     @score = Score.new
     @game_data = GameData.new
+    DB = Sequel.connect('postgres://localhost/lingbot')
   end
 
   def start!
