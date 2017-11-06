@@ -1,12 +1,12 @@
 module Input
 
-  def get_answer(randon_question)
+  def get_answer(random_question)
     loop do
       answer = gets.chomp
-      if answer == randon_question[:answer]
+      if answer == random_question[:answer]
         correct = true
       else
-        puts (colorize(str: 'wrong, try again', color_code: 31))                            
+        puts (colorize(str: 'wrong, try again', color_code: 31))
       end
       break if(correct == true)
     end

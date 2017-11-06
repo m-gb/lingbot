@@ -11,11 +11,11 @@ require_relative 'output'
 class Game
   include Colorable
   include Output
-  
+
   def initialize
     @score = Score.new
-    @game_data = GameData.new
-    DB = Sequel.connect('postgres://localhost/lingbot')
+    @db = Sequel.connect('postgres://maya:@localhost:5432/lingbot')
+    @game_data = @db[:challenges]
   end
 
   def start!
@@ -35,25 +35,26 @@ class Game
     case game
     when 'article'
       picked_game(game)
-      @a_questions ||= @game_data.article_questions
+      #@a_questions ||= @game_data['select * from challenges where type = ?', 'article']
+      @a_questions ||= @game_data.where(Sequel.like(:type, 'article')).all
       article = Article.new
-      check_status(article, @a_questions)
+      check_status(article, @a_questions.to_a)
     when 'plural'
       picked_game(game)
-      @p_questions ||=  @game_data.plural_questions
+      @p_questions ||=  @game_data.where(Sequel.like(:type, 'plural')).all
       plural = Plural.new
-      check_status(plural, @p_questions)
+      check_status(plural, @p_questions.to_a)
     when 'word'
       picked_game(game)
-      @w_questions ||= @game_data.word_questions 
+      @w_questions ||= @game_data.where(Sequel.like(:type, 'word')).all
       word = Word.new
-      check_status(word, @w_questions)
+      check_status(word, @w_questions.to_a)
     when 'score'
       @score.show_score
     when 'stop'
       @stop_the_game = true
     else
-      puts (colorize(str: "That game doesn't exist.", color_code: 31))              
+      puts (colorize(str: "That game doesn't exist.", color_code: 31))
     end
   end
 
