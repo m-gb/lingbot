@@ -1,3 +1,3 @@
 # lingbot
-A chat app which includes a language game.
-Using a TCP socket and PostgreSQL. 
+A multi-client language game written in Ruby.
+Using TCP sockets and PostgreSQL.

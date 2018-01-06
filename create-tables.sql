@@ -23,4 +23,3 @@ INSERT INTO challenges(type, question, answer) VALUES('word','How do you say man
 INSERT INTO challenges(type, question, answer) VALUES('word','How do you say woman?','Die Frau');
 INSERT INTO challenges(type, question, answer) VALUES('word','How do you say water?','Das Wasser');
 INSERT INTO challenges(type, question, answer) VALUES('word','How do you say computer?','Der Computer');
-
