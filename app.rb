@@ -1,6 +1,5 @@
 require 'pg'
 require 'sequel'
-require_relative 'game_data'
 require_relative 'score'
 require_relative 'colorable'
 require_relative 'article'
@@ -14,7 +13,7 @@ class Game
 
   def initialize
     @score = Score.new
-    @db = Sequel.connect('postgres://maya:@localhost:5432/lingbot')
+    @db = Sequel.connect('postgres://lingbot:@localhost:5432/lingbot')
     @game_data = @db[:challenges]
   end
 
@@ -23,7 +22,7 @@ class Game
     loop do
       game = choose_game
       play_game(game)
-      if(@stop_the_game == true)
+      if @stop_the_game == true
         @score.final_score
         quit_game
         exit(0)
@@ -35,7 +34,6 @@ class Game
     case game
     when 'article'
       picked_game(game)
-      #@a_questions ||= @game_data['select * from challenges where type = ?', 'article']
       @a_questions ||= @game_data.where(Sequel.like(:type, 'article')).all
       article = Article.new
       check_status(article, @a_questions.to_a)
@@ -54,7 +52,7 @@ class Game
     when 'stop'
       @stop_the_game = true
     else
-      puts (colorize(str: "That game doesn't exist.", color_code: 31))
+      puts colorize(str: "That game doesn't exist.", color_code: 31)
     end
   end
 

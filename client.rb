@@ -23,7 +23,7 @@ class Client
   end
 
   def send
-    puts "Enter your username:"
+    puts 'Enter your username:'
     @request = Thread.new do
       loop {
         msg = $stdin.gets.chomp
@@ -38,5 +38,5 @@ class Client
 
 end
 
-server = TCPSocket.open("localhost", 3000)
+server = TCPSocket.open('localhost', 3000)
 Client.new(server)

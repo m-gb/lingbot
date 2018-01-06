@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'socket'
-require './app.rb'
+require_relative 'app'
+
 class Server
   def initialize(port, ip)
     @server = TCPServer.open(ip, port)
@@ -19,7 +20,7 @@ class Server
         nick_name = client.gets.chomp.to_sym
         @connections[:clients].each do |other_name, other_client|
           if nick_name == other_name || client == other_client
-            client.puts "This username already exists"
+            client.puts 'This username already exists'
             Thread.kill self
           end
         end
@@ -44,4 +45,4 @@ class Server
 
 end
 
-Server.new(3000, "localhost")
+Server.new(3000, 'localhost')
